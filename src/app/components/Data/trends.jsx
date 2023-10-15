@@ -1,7 +1,7 @@
 export const trends = [
   {
     productId: "1",
-    img: "/pins/download.jpeg",
+    img: "/nobg/jacket.png",
     description: "Clothings",
   },
   {

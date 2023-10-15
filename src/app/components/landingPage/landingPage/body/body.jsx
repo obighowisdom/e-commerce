@@ -2,46 +2,26 @@ import React from "react";
 import styled from "styled-components";
 import LeftSideBar from "../sidebar/leftSideBar";
 import Image from "next/image";
-import Badge from "react-bootstrap/Badge";
 import Link from "next/link";
 import PopularProducts from "./popular";
 import Promo from "./promo";
 import Flash from "./flash";
 import { trends } from "@/app/components/Data/trends";
-// import SimpleSlider from "./slider";]
+import Deals from "./deals";
+import Blog from "./blog";
+import Carousel from "react-elastic-carousel";
 
 const BodyArea = () => {
   return (
     <ContentDiv>
       <ScrollArea>
         <ContentArea>
-          <h2>Trending Categories</h2>
-          <TrendingBox>
-            {trends.map((trend, index) => {
-              const {productId, img, description} = trend
-              return (
-                <>
-                  <TrendBox key={index}>
-                    {/* <b>40% Off</b> */}
-                    <TrendCard>
-                      <Image
-                        style={{ marginTop: "10px" }}
-                        src={img}
-                        width={100}
-                        height={130}
-                        alt="logo"
-                      />
-                      <Btn>{description}</Btn>
-                    </TrendCard>
-                  </TrendBox>
-                </>
-              );
-            })}
-          
-          </TrendingBox>
+          <TitleDiv>
+            <h2>Trending Categories</h2>
+          </TitleDiv>
         </ContentArea>
 
-        <HurryUp>
+        {/* <HurryUp>
           <HurryOne>
             <InnerBox>
               <h2>MacBooks </h2>
@@ -60,7 +40,7 @@ const BodyArea = () => {
             <InnerBox>
               <h2>Gadgets </h2>
               <h5>
-                Get the latest Gadgets <br />  for a low price{" "}
+                Get the latest Gadgets <br /> for a low price{" "}
               </h5>
 
               <p>
@@ -69,10 +49,12 @@ const BodyArea = () => {
               <button>Shop Now</button>
             </InnerBox>
           </HurryTwo>
-        </HurryUp>
-        <PopularProducts />
-        <Promo />
-        <Flash/>
+        </HurryUp> */}
+        {/* <PopularProducts /> */}
+        {/* <Promo /> */}
+        {/* <Flash /> */}
+        {/* <Deals /> */}
+        {/* <Blog /> */}
       </ScrollArea>
     </ContentDiv>
   );
@@ -81,50 +63,61 @@ const BodyArea = () => {
 export default BodyArea;
 
 const ContentDiv = styled.div`
-  display: flex;
-  justify-content: center;
+  
   width: 100%;
+  @media (max-width: 1040px) {
+    width: 100%;
+    justify-content: flex-start;
+  }
 `;
 
 const ScrollArea = styled.div`
-  /* display: flex; */
   margin: 20px;
   width: 100%;
 `;
 
 const ContentArea = styled.div`
   width: 100%;
+`;
+
+const TitleDiv = styled.div`
+  padding: 8px 10px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  background-color: #1c1c1c;
 
   h2 {
-    color: var(--base-color-dark, #1c1c1c);
+    color: var(--base-color-dark, #fff);
     font-feature-settings: "clig" off, "liga" off;
     font-family: "Inter" sans-serif;
     font-size: 20px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
-    border-bottom: 1px solid purple;
+
     width: fit-content;
-    padding-bottom: 9px;
   }
 `;
 const TrendingBox = styled.div`
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  /* justify-content: ; */
   align-items: center;
   flex-wrap: wrap;
-  /* gap: 30px; */
+  gap: 10px;
   /* @media (max-width: 1000px) {
     width: 100%;
   } */
 `;
 const TrendBox = styled.div`
-  /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
-  /* border-radius: 15px; */
+  box-shadow: rgba(1, 1, 89, 0.25) 0px 30px 60px -12px inset,
+    rgba(10, 1, 74, 0.3) 0px 18px 36px 18px inset;
   background-color: #fff;
   width: 200px;
   height: 200px;
+  @media (max-width: 1000px) {
+    width: 100%;
+  }
   b {
     text-decoration: none;
     outline: none;
@@ -149,22 +142,23 @@ const TrendCard = styled.div`
   }
 `;
 const Btn = styled.button`
+  position: absolute;
   text-decoration: none;
   outline: none;
   text-decoration-line: none;
-  color: var(--base-color-dark, #8d0404);
+  color: var(--base-color-dark, #fff);
   font-family: "Inter" sans-serif;
   font-size: 12px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
   margin-top: 10px;
-  background: none;
+  background: #80008090;
   border: 1px solid purple;
   border-radius: 10px;
   padding: 6px 8px;
   &:hover {
-    background: purple;
+    background: none;
     border: 1px solid #fff;
     color: var(--base-color-dark, #fff);
   }
@@ -177,6 +171,8 @@ const HurryUp = styled.div`
   margin-top: 20px;
   @media (max-width: 1000px) {
     flex-wrap: wrap;
+    width: 100%;
+    flex-direction: column;
   }
 `;
 
@@ -185,26 +181,27 @@ const HurryOne = styled.div`
   /* align-items: center; */
   width: 50%;
   height: 350px;
-  /* background-color: red; */
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  background-image: url("/image/macbook.jpg");
+  background-color: red;
+  /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
+  /* background-image: url("/image/macbook.jpg");
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
-  @media (max-width: 900px) {
+  background-size: contain; */
+  @media (max-width: 1040px) {
     width: 100%;
+    flex-direction: column;
   }
 `;
 const HurryTwo = styled.div`
   width: 50%;
   height: 350px;
-  /* background-color: purple; */
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  background-color: purple;
+  /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   background-image: url("/image/unsplash.jpg");
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
-  @media (max-width: 900px) {
+  background-size: contain; */
+  @media (max-width: 1040px) {
     width: 100%;
   }
 `;
@@ -213,6 +210,12 @@ const InnerBox = styled.div`
   margin-left: 45px;
   margin-top: 35px;
   width: 200px;
+  @media (max-width: 1000px) {
+    width: 100%;
+    margin-left: 4px;
+    margin-top: 4px;
+    position: absolute;
+  }
   h2 {
     color: var(--base-color-dark, #3c0202);
     font-feature-settings: "clig" off, "liga" off;

@@ -28,38 +28,43 @@ const Flash = () => {
             </div>
           </TextDiv>
           <Box>
-            {flashSales.map((item, index) => {
-              const { discount, img, name, price, description, discountPrice } =
-                item;
+            {flashSales.map((item) => {
+              const {
+                discount,
+                img,
+                productId,
+                price,
+                description,
+                discountPrice,
+              } = item;
               return (
-                <>
-                  <BoxCard>
-                    <Wish>
-                      <Rate>
-                        <Percent>
-                          <b>{discount}</b>
-                        </Percent>
-                      </Rate>
-                      {/* <FontAwesomeIcon icon={faHeart} style={{ color: "gray" }} /> */}
-                      <AiOutlineHeart />
-                    </Wish>
-                    <Card>
-                      <Image
-                        style={{ marginTop: "10px" }}
-                        src={img}
-                        width={100}
-                        height={150}
-                        alt="Image"
-                      />
-                      <Desc>
-                        <b>{description}</b>
-                      </Desc>
-                      <Price>
-                        {price} <del>{discountPrice}</del>{" "}
-                      </Price>
-                    </Card>
-                  </BoxCard>
-                </>
+                <BoxCard key={productId}>
+                  <Wish>
+                    <Rate>
+                      <Percent>
+                        <b>{discount}</b>
+                      </Percent>
+                    </Rate>
+                    {/* <FontAwesomeIcon icon={faHeart} style={{ color: "gray" }} /> */}
+                    <AiOutlineHeart />
+                  </Wish>
+                  <Card>
+                    <Image
+                      src={img}
+                      width={0}
+                      height={0}
+                      sizes="100vw"
+                      style={{ width: "100%", height: "auto" }}
+                      alt="Image"
+                    />
+                    <Desc>
+                      <b>{description}</b>
+                    </Desc>
+                    <Price>
+                      {price} <del>{discountPrice}</del>{" "}
+                    </Price>
+                  </Card>
+                </BoxCard>
               );
             })}
           </Box>
@@ -118,7 +123,7 @@ const BoxCard = styled.div`
   /* border-radius: 15px; */
   background-color: #fff;
   width: 200px;
-  height: 280px;
+  height: 300px;
   padding-bottom: 12px;
   margin-top: 10px;
   gap: 15px;

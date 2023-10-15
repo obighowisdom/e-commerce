@@ -20,39 +20,37 @@ const PopularProducts = () => {
             </div>
           </TextDiv>
           <Box>
-            {PopularItems.map((item, index) => {
+            {PopularItems.map((item) => {
               const { productId, img, description, amount } = item;
 
               return (
-                <>
-                  <BoxCard key={index}>
-                    <Wish>
-                      <Rate>
-                        <AiFillStar style={{ color: "#888803" }} />
-                        <AiFillStar style={{ color: "#888803" }} />
-                        <AiFillStar style={{ color: "#888803" }} />
-                        <AiFillStar style={{ color: "#888803" }} />
-                        <AiFillStar style={{ color: "gray" }} />
-                      </Rate>
-                      {/* <FontAwesomeIcon icon={faHeart} style={{ color: "gray" }} /> */}
-                      <AiOutlineHeart />
-                    </Wish>
-                    <Card>
-                      <Image
-                        style={{ marginTop: "10px" }}
-                        src={img}
-                        width={150}
-                        height={150}
-                        alt="logo"
-                      />
+                <BoxCard key={productId}>
+                  <Wish>
+                    <Rate>
+                      <AiFillStar style={{ color: "#888803" }} />
+                      <AiFillStar style={{ color: "#888803" }} />
+                      <AiFillStar style={{ color: "#888803" }} />
+                      <AiFillStar style={{ color: "#888803" }} />
+                      <AiFillStar style={{ color: "gray" }} />
+                    </Rate>
+                    {/* <FontAwesomeIcon icon={faHeart} style={{ color: "gray" }} /> */}
+                    <AiOutlineHeart />
+                  </Wish>
+                  <Card>
+                    <Image
+                      style={{ marginTop: "10px" }}
+                      src={img}
+                      width={150}
+                      height={150}
+                      alt="logo"
+                    />
 
-                      <Desc>
-                        <b>{description}</b>
-                      </Desc>
-                      <Price>{amount} </Price>
-                    </Card>
-                  </BoxCard>
-                </>
+                    <Desc>
+                      <b>{description}</b>
+                    </Desc>
+                    <Price>{amount} </Price>
+                  </Card>
+                </BoxCard>
               );
             })}
           </Box>
@@ -66,9 +64,12 @@ export default PopularProducts;
 
 const Container = styled.div`
   margin-top: 20px;
+  width: 100%;
 `;
 
-const Product = styled.div``;
+const Product = styled.div`
+width: 100%;
+`;
 const TextDiv = styled.div`
   display: flex;
   justify-content: space-between;
@@ -105,6 +106,10 @@ const Box = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
   background: #fffcf7;
+  @media (max-width: 1040px) {
+    width: 100%;
+    
+  }
 `;
 const BoxCard = styled.div`
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
