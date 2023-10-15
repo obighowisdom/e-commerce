@@ -51,8 +51,13 @@ const Content = styled.div`
   margin-top: 20px;
   background: #ebf4fa;
   height: 300px;
-  border-top-right-radius: 15px;
-  border-top-left-radius: 15px;
+  /* border-top-right-radius: 15px; */
+  /* border-top-left-radius: 15px; */
+  padding: 20px;
+  width: 100%;
+  @media (max-width: 1000px) {
+    height: 100%;
+  }
 `;
 
 const Box = styled.div`
@@ -60,14 +65,26 @@ const Box = styled.div`
   height: 100%;
   display: flex;
   align-items: center;
+  @media (max-width: 1000px) {
+    flex-direction: column;
+    justify-content: space-between;
+  }
 `;
 
 const CardOne = styled.div`
   width: 50%;
+  @media (max-width: 1000px) {
+    width: 100%;
+  }
 
   /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
 `;
-const CardTwo = styled.div``;
+const CardTwo = styled.div`
+/* margin-top: 40px; */
+  @media (max-width: 1000px) {
+    width: 100%;
+  }
+`;
 const BannerImgDiv = styled.div`
   width: 100%;
   display: flex;

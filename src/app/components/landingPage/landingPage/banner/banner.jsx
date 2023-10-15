@@ -63,7 +63,8 @@ const Banner = () => {
 export default Banner;
 
 const BannerDiv = styled.div`
-  margin-top: 12px;
+position: inherit;
+  margin-top: 50px;
   width: 100%;
   display: flex;
   padding: 12px;
