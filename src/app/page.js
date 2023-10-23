@@ -8,14 +8,25 @@ import Footer from "./components/landingPage/footer";
 import TopNav from "./components/NavBar/topNav";
 import Deals from "./components/landingPage/landingPage/body/deals";
 import Promo from "./components/landingPage/landingPage/body/promo";
+import Products from "./components/landingPage/landingPage/body/products";
+import PopularProducts from "./components/landingPage/landingPage/body/popular";
+import Flash from "./components/landingPage/landingPage/body/flash";
+import ProductCard from "./components/cards/productCard";
+import FramerCard from "./components/framer/framer";
+import NewBanner from "./components/landingPage/landingPage/banner/newbanner";
+import Kids from "./components/landingPage/landingPage/kids/kid";
 
 const HomePage = () => {
   return (
     <>
       <OverAllDiv>
         <TopNav />
-        <Banner />
+        <NewBanner />
         <BodyBox>
+          <ProductCard />
+          <Deals />
+          <Kids />
+          <FramerCard />
           <Promo />
         </BodyBox>
 
@@ -32,7 +43,7 @@ const OverAllDiv = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
-  /* margin: 0 auto; */
+  margin: 0 auto;
   align-items: center;
   justify-content: center;
 
@@ -40,13 +51,14 @@ const OverAllDiv = styled.div`
     padding: 5px;
   }
 `;
-const ContentArea = styled.div`
-  /* background: ; */
-`;
 
 const BodyBox = styled.div`
-/* position: relative; */
-background-color: red;
- padding: 20px;
- width: 100%;
-`
+  /* position: relative; */
+
+  background: #3c020274;
+  padding: 50px;
+  width: 100%;
+  @media (max-width: 800px) {
+    padding: 10px;
+  }
+`;

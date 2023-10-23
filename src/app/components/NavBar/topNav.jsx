@@ -7,104 +7,61 @@ import { useState } from "react";
 import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
 import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
 import PersonIcon from "@mui/icons-material/Person";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
-import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
-import SearchOffIcon from "@mui/icons-material/SearchOff";
-import { Categories } from "../Menu/categoryMenu";
+import SearchIcon from "@mui/icons-material/Search";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 
 const TopNav = () => {
   const [displayCategory, setDisplayCategory] = useState(false);
-  const [showNav, setShowNav] = useState(false)
-    
+  const [showNav, setShowNav] = useState(false);
+
   return (
     <TopDiv>
       <Section>
         <SectionOne></SectionOne>
         <SectionTwo>
           <Hamburger onClick={() => setShowNav(!showNav)}>
-            <MoreVertIcon />
+            <MoreVertIcon sx={{ color: "#fff" }} />
           </Hamburger>
           <ImageBox>
             <Image src="/logos/purple.png" width={70} height={70} alt="logo" />
           </ImageBox>
-          <MenuBox>
-            <Menus style={{ left: showNav ? "0" : "" }}>
-              <CatDiv>
-                <CatBox
-                  style={{ cursor: "pointer" }}
-                  onClick={() => setDisplayCategory(!displayCategory)}
-                >
-                  <Text>Category</Text>
-                  <Drop>
-                    <ArrowDropUpIcon
-                      style={{ display: displayCategory ? "block" : "none" }}
-                    />
-                    <ArrowDropDownIcon
-                      style={{ display: displayCategory ? "none" : "block" }}
-                    />
-                  </Drop>
-                </CatBox>
 
-                <Category
-                  style={{
-                    display: displayCategory === true ? "block" : "none",
-                  }}
-                >
-                  {Categories.map((item, index) => {
-                    const { url, name } = item;
-                    return (
-                      <Menu key={index}>
-                        <Link
-                          style={{
-                            textDecoration: "none",
-                            color: "#3c0202",
-                            fontSize: "14px",
-                          }}
-                          href={url}
-                        >
-                          {name}
-                        </Link>
-                      </Menu>
-                    );
-                  })}
-                </Category>
-              </CatDiv>
+          <Box>
+            <Cat>
+              <select name="" id="default">
+                <option value="all">All</option>
+                <option value="fashion">Fashion</option>
+                <option value="men">Men</option>
+                <option value="women">Women</option>
+                <option value="kids">Kids </option>
+                <option value="phones">Phones & Computer Accessories </option>
+              </select>
+            </Cat>
+            <InputField type="text" placeholder="Searh products" />
 
-              <Menu>Trending</Menu>
-              <Menu>New Arrival</Menu>
-              <Menu>Blogs</Menu>
-              <Menu>Flash Sales </Menu>
-            </Menus>
-          </MenuBox>
+            <IconSearch>
+              
+              <SearchIcon sx={{ color: "white" }} />
+            </IconSearch>
+          </Box>
 
           <Icons>
-            <SearchBox>
-              <FontAwesomeIcon
-                icon={faMagnifyingGlass}
-                fade
-                style={{ cursor: "pointer", color: "purple" }}
-              />
-            </SearchBox>
-
             <Badge
               badgeContent={"0"}
               color="primary"
               style={{ cursor: "pointer" }}
             >
-              <ShoppingCartCheckoutIcon color="purple" />
+              <ShoppingCartCheckoutIcon sx={{ color: "white" }} />
             </Badge>
             <Badge
               badgeContent={"0"}
               color="warning"
               style={{ cursor: "pointer" }}
             >
-              <NotificationsActiveIcon color="purple" />
+              <NotificationsActiveIcon sx={{ color: "white" }} />
             </Badge>
             <Login>
-              <PersonIcon style={{ cursor: "pointer" }} />
+              <PersonIcon sx={{ color: "white" }} />
             </Login>
           </Icons>
         </SectionTwo>
@@ -114,6 +71,91 @@ const TopNav = () => {
 };
 
 export default TopNav;
+
+const Box = styled.div`
+  display: flex;
+  width: 800px;
+  height: 40px;
+  margin-left: 30px;
+  margin-right: 30px;
+  border-radius: 10px;
+
+  background-color: #fff;
+  @media (max-width: 700px) {
+    width: 100%;
+    display: none;
+  }
+  &:hover {
+    border: 2px solid coral;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  }
+`;
+const Cat = styled.div`
+  background: gray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+   width: 50px;
+
+  select {
+    border: none;
+    outline: none;
+    background: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+
+    /* padding: 2px; */
+    color: var(--base-color-dark, #3c0202);
+    font-feature-settings: "clig" off, "liga" off;
+    font-family: "Inter" sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    option {
+      /* padding: 5px; */
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+
+      color: var(--base-color-dark, #3c0202);
+      font-feature-settings: "clig" off, "liga" off;
+      font-family: "Inter" sans-serif;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+    }
+  }
+`;
+const InputField = styled.input`
+  width: 100%;
+  height: 100%;
+  outline: none;
+  padding: 5px;
+  text-align: center;
+  color: var(--base-color-dark, #000);
+  font-feature-settings: "clig" off, "liga" off;
+  font-family: "Inter" sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+`;
+const IconSearch = styled.div`
+  background-color: #3c0202;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+`;
 
 const TopDiv = styled.div`
   height: 100%;
@@ -129,7 +171,7 @@ const Section = styled.div`
 const SectionOne = styled.div``;
 const SectionTwo = styled.div`
   backdrop-filter: blur(5px);
-  background-color: #ff7f50b4;
+  background-color: #1c1c1c;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -139,7 +181,7 @@ const SectionTwo = styled.div`
   right: 0%;
   top: 0%;
   @media (max-width: 1040px) {
-    justify-content: space-around
+    justify-content: space-between;
   }
 `;
 const ImageBox = styled.div`
@@ -147,9 +189,7 @@ const ImageBox = styled.div`
     margin-left: 70px;
   }
 `;
-const MenuBox = styled.div`
-  
-`
+const MenuBox = styled.div``;
 const Menus = styled.div`
   margin-top: 10px;
   display: flex;
@@ -159,10 +199,10 @@ const Menus = styled.div`
   @media (max-width: 700px) {
     /* display: none; */
     backdrop-filter: blur(5px);
+    background-color: #1c1c1c;
     position: absolute;
     top: 100%;
-    background: #ff7f50;
-    width: 230px;
+    width: 100%;
     left: 3000%;
     flex-direction: column;
     align-items: flex-start;
@@ -177,11 +217,9 @@ const Login = styled.div`
     display: none;
   }
 `;
-const ArrowBox = styled.div`
-  
-`
+const ArrowBox = styled.div``;
 const SearchBox = styled.div`
-display: flex;
+  display: flex;
   @media (max-width: 700px) {
     display: none;
   }
@@ -192,7 +230,7 @@ const Hamburger = styled.div`
     display: block;
     cursor: pointer;
     padding: 5px;
-    &:hover{
+    &:hover {
       background-color: purple;
       border-radius: 25px;
     }
@@ -201,7 +239,7 @@ const Hamburger = styled.div`
 
 const Icons = styled.div`
   display: flex;
-  /* padding-right: 30px; */
+  padding-right: 30px;
   gap: 30px;
   align-items: center;
 `;
@@ -241,7 +279,7 @@ const CatBox = styled.div`
 `;
 const Text = styled.p`
   cursor: pointer;
-  color: var(--base-color-dark, #3c0202);
+  color: var(--base-color-dark, #fff);
   font-feature-settings: "clig" off, "liga" off;
   font-family: "Inter" sans-serif;
   font-size: 14px;
@@ -258,7 +296,7 @@ const Drop = styled.div`
 `;
 const Menu = styled.p`
   cursor: pointer;
-  color: var(--base-color-dark, #3c0202);
+  color: var(--base-color-dark, #fff);
   font-feature-settings: "clig" off, "liga" off;
   font-family: "Inter" sans-serif;
   font-size: 14px;
@@ -269,4 +307,3 @@ const Menu = styled.p`
     color: purple;
   }
 `;
-

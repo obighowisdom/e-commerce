@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import Image from "next/image";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faStar } from "@fortawesome/free-solid-svg-icons";
 import { AiOutlineHeart, AiFillStar } from "react-icons/Ai";
@@ -8,6 +10,25 @@ import { BiSolidRightArrowAlt } from "react-icons/bi";
 import { PopularItems } from "@/app/components/Data/popularProducts";
 
 const PopularProducts = () => {
+  const responsive = {
+    superLargeDesktop: {
+      // the naming can be any, depends on you.
+      breakpoint: { max: 4000, min: 3000 },
+      items: 5,
+    },
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 3,
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 2,
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1,
+    },
+  };
   return (
     <>
       <Container>
@@ -19,41 +40,7 @@ const PopularProducts = () => {
               <BiSolidRightArrowAlt style={{ color: "#fff" }} />
             </div>
           </TextDiv>
-          <Box>
-            {PopularItems.map((item) => {
-              const { productId, img, description, amount } = item;
-
-              return (
-                <BoxCard key={productId}>
-                  <Wish>
-                    <Rate>
-                      <AiFillStar style={{ color: "#888803" }} />
-                      <AiFillStar style={{ color: "#888803" }} />
-                      <AiFillStar style={{ color: "#888803" }} />
-                      <AiFillStar style={{ color: "#888803" }} />
-                      <AiFillStar style={{ color: "gray" }} />
-                    </Rate>
-                    {/* <FontAwesomeIcon icon={faHeart} style={{ color: "gray" }} /> */}
-                    <AiOutlineHeart />
-                  </Wish>
-                  <Card>
-                    <Image
-                      style={{ marginTop: "10px" }}
-                      src={img}
-                      width={150}
-                      height={150}
-                      alt="logo"
-                    />
-
-                    <Desc>
-                      <b>{description}</b>
-                    </Desc>
-                    <Price>{amount} </Price>
-                  </Card>
-                </BoxCard>
-              );
-            })}
-          </Box>
+    
         </Product>
       </Container>
     </>
@@ -68,7 +55,7 @@ const Container = styled.div`
 `;
 
 const Product = styled.div`
-width: 100%;
+  width: 100%;
 `;
 const TextDiv = styled.div`
   display: flex;
@@ -108,7 +95,6 @@ const Box = styled.div`
   background: #fffcf7;
   @media (max-width: 1040px) {
     width: 100%;
-    
   }
 `;
 const BoxCard = styled.div`
