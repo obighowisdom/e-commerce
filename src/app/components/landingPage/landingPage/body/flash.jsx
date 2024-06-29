@@ -1,105 +1,69 @@
 import React from "react";
 import styled from "styled-components";
 import Image from "next/image";
-import { AiOutlineHeart, AiFillStar } from "react-icons/Ai";
-import { BiSolidRightArrowAlt } from "react-icons/bi";
-import { FcFlashOn } from "react-icons/fc";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBoltLightning } from "@fortawesome/free-solid-svg-icons";
 import { flashSales } from "@/app/components/Data/flash";
 
 const Flash = () => {
   return (
     <>
-      <Container>
-        <Product>
-          <TextDiv>
-            <FlashDiv>
-              <Text>Flash Sales </Text>
-              <FontAwesomeIcon
-                icon={faBoltLightning}
-                shake
-                size="xl"
-                style={{ color: "coral" }}
-              />
-            </FlashDiv>
-            <div style={{ display: "flex", alignItems: "center" }}>
-              <BiSolidRightArrowAlt size={30} style={{ color: "#c64906" }} />
-            </div>
-          </TextDiv>
-          <Box>
-            {flashSales.map((item) => {
-              const {
-                discount,
-                img,
-                productId,
-                price,
-                description,
-                discountPrice,
-              } = item;
-              return (
-                <BoxCard key={productId}>
-                  <Wish>
-                    <Rate>
-                      <Percent>
-                        <b>{discount}</b>
-                      </Percent>
-                    </Rate>
-                    {/* <FontAwesomeIcon icon={faHeart} style={{ color: "gray" }} /> */}
-                    <AiOutlineHeart />
-                  </Wish>
-                  <Card>
-                    <Image
-                      src={img}
-                      width={0}
-                      height={0}
-                      sizes="100vw"
-                      style={{ width: "100%", height: "auto" }}
-                      alt="Image"
-                    />
-                    <Desc>
-                      <b>{description}</b>
-                    </Desc>
-                    <Price>
-                      {price} <del>{discountPrice}</del>{" "}
-                    </Price>
-                  </Card>
-                </BoxCard>
-              );
-            })}
-          </Box>
-        </Product>
-      </Container>
+      <BoxDiv>
+        {flashSales.map((item) => {
+          const {
+            discount,
+            img,
+            productId,
+            price,
+            description,
+            discountPrice,
+          } = item;
+          return (
+            <BoxCard key={productId}>
+              <Wish>
+                <Percent>
+                  <b>{discount}</b>
+                </Percent>
+              </Wish>
+              <Card>
+                <ImgCard>
+                  <Image
+                    className="Image"
+                    src={img}
+                    width={0}
+                    height={0}
+                    sizes="100vw"
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                    }}
+                    alt="Image"
+                  />
+                </ImgCard>
+
+                <Desc>
+                  <b>{description}</b>
+                </Desc>
+                <Price>
+                  {price} <del>{discountPrice}</del>{" "}
+                </Price>
+              </Card>
+            </BoxCard>
+          );
+        })}
+      </BoxDiv>
     </>
   );
 };
 
 export default Flash;
+const ImgCard = styled.div`
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 
-const Container = styled.div`
-  margin-top: 20px;
 `;
 
-const Product = styled.div``;
-const TextDiv = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 8px 12px;
-  background-color: purple;
-`;
-
-const ViewBtn = styled.button`
-  border: none;
-  background: none;
-  color: var(--base-color-dark, #fff);
-  font-feature-settings: "clig" off, "liga" off;
-  font-family: "Inter" sans-serif;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-`;
 const Text = styled.h3`
   color: var(--base-color-dark, #fffcf7);
   font-feature-settings: "clig" off, "liga" off;
@@ -111,50 +75,60 @@ const Text = styled.h3`
 
   width: fit-content;
 `;
-const Box = styled.div`
+const BoxDiv = styled.div`
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  background: #fffcf7;
+  gap: 5px;
+  justify-content: center;
+  @media (max-width: 700px) {
+    width: 100%;
+    align-items: center;
+    flex-wrap: wrap;
+  }
 `;
 const BoxCard = styled.div`
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  /* border-radius: 15px; */
-  background-color: #fff;
-  width: 200px;
-  height: 300px;
+  border-radius: 10px;
   padding-bottom: 12px;
-  margin-top: 10px;
+  margin-top: 5px;
   gap: 15px;
+  @media (max-width: 1040px) {
+    width: 100px;
+    height: 100%;
+    flex-direction: column;
+  }
 `;
 const Card = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* justify-content: space-evenly; */
 `;
-const Rate = styled.div``;
 const Percent = styled.div`
+  background-color: #faeedacb;
+  display: flex;
+
+
   b {
     color: var(--base-color-dark, coral);
     font-feature-settings: "clig" off, "liga" off;
     font-family: "Inter" sans-serif;
-    font-size: 14px;
+    font-size: 13px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+    @media (max-width: 700px) {
+      font-size: 8px;
+    }
   }
 `;
 const Wish = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 6px;
-  padding-right: 15px;
-  padding-left: 15px;
-`;
+  position: absolute;
+  /* display: flex; */
+  /* justify-content: flex-start;
+  align-items: flex-start; */
+ `;
 const Desc = styled.div`
   display: flex;
   flex-direction: column;
@@ -162,6 +136,9 @@ const Desc = styled.div`
   width: 150px;
   margin-top: 10px;
   margin-bottom: 10px;
+  @media (max-width: 700px) {
+    margin-bottom: 3px;
+  }
 
   b {
     text-align: center;
@@ -172,6 +149,9 @@ const Desc = styled.div`
     font-style: normal;
     font-weight: bold;
     line-height: normal;
+    @media (max-width: 700px) {
+      font-size: 9px;
+    }
   }
 `;
 const Price = styled.b`
@@ -182,6 +162,9 @@ const Price = styled.b`
   font-style: normal;
   font-weight: bold;
   line-height: normal;
+  @media (max-width: 700px) {
+    font-size: 9px;
+  }
   del {
     color: #cecece;
     font-family: "Inter" sans-serif;
@@ -189,11 +172,9 @@ const Price = styled.b`
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+    @media (max-width: 700px) {
+      font-size: 8px;
+    }
   }
 `;
 
-const FlashDiv = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 4px;
-`;

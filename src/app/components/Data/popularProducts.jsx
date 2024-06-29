@@ -8,7 +8,7 @@ export const PopularItems = [
   {
     productId: "2",
     img: "/pins/dior.jpeg",
-    description: "Casual Male wears",
+    description: "Casual Male wears very good to wear at home and also",
     amount: "$13.99",
   },
   {
@@ -61,15 +61,14 @@ export const PopularItems = [
   },
   {
     productId: "11",
-    img: "/pins/gray.jpeg",
-    description: "Apple Headset",
-    amount: "$125.99",
+    img: "/pins/lenovo.jpeg",
+    description: "Lenovo 1Tb/16GB",
+    amount: "$199.99",
   },
   {
     productId: "12",
-    img: "/pins/stone.jpeg",
-      description: "Quality Sneakers",
-    amount: "$25.99",
-    
+    img: "/pins/short.jpeg",
+    description: "Casual Home Wears",
+    amount: "$6.99",
   },
 ];

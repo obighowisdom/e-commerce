@@ -119,11 +119,15 @@ const CardBody = styled.div`
 
 const Box = styled.div`
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-evenly;
+  align-items: center;
   /* align-items: center; */
-  @media (max-width: 1000px) {
+  @media (max-width: 800px) {
     width: 100%;
     flex-direction: column;
+    justify-content: space-evenly;
+    align-items: flex-start;
   }
 `;
 const Text = styled.p`

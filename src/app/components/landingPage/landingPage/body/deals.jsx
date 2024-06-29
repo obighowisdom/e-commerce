@@ -1,13 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import Image from "next/image";
-import { AiOutlineHeart, AiFillStar } from "react-icons/Ai";
+import { AiFillStar } from "react-icons/Ai";
 import { BsFire } from "react-icons/bs";
 import Carousel from "react-bootstrap/Carousel";
 import { HotDeals } from "@/app/components/Data/dealsData";
-
-
-
 
 const Deals = () => {
   return (
@@ -27,21 +24,30 @@ const Deals = () => {
         style={{ width: "100%", paddingTop: "12px" }}
       >
         {HotDeals.map((item) => {
-          const {productId, discount, img, name, description, price, discountPrice} =item
+          const {
+            productId,
+            discount,
+            img,
+            name,
+            description,
+            price,
+            discountPrice,
+          } = item;
           return (
             <Carousel.Item key={productId}>
               <ProductDiv>
                 <ImgCard>
-                  <b>{discount}</b>
                   <Image
                     src={img}
-                    alt="Image"
-                    width={450}
-                    height={600}
+                    width={0}
+                    height={0}
+                    alt="image"
+                    sizes="100vw"
+                    style={{ width: "100%", height: "100%" }}
                   />
                 </ImgCard>
                 <Description>
-                  <TextOne>{ name }</TextOne>
+                  <TextOne>{name}</TextOne>
                   <Rate>
                     {" "}
                     <AiFillStar style={{ color: "#888803" }} />
@@ -51,11 +57,10 @@ const Deals = () => {
                     <AiFillStar style={{ color: "gray" }} />
                   </Rate>
                   <Amount>
-                    {price}<del>{discountPrice} </del>
+                    {price}
+                    <del>{discountPrice} </del>
                   </Amount>
-                  <TextTwo>
-                  {description}
-                  </TextTwo>
+                  <TextTwo>{description}</TextTwo>
                   <TimeBox>
                     <Time>
                       <h3>00</h3>
@@ -78,9 +83,8 @@ const Deals = () => {
                 </Description>
               </ProductDiv>
             </Carousel.Item>
-          );          
+          );
         })}
-      
       </Carousel>
     </Container>
   );
@@ -89,10 +93,9 @@ const Deals = () => {
 export default Deals;
 
 const Container = styled.div`
-  /* box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
-    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset; */
- 
   width: 100%;
+  padding: 10px;
+  background: #3c020274;
 
   left: -50%;
   right: 0%;
@@ -107,10 +110,7 @@ const Hot = styled.div`
   p {
   }
 `;
-const Fire= styled.div`
-  
-
-`
+const Fire = styled.div``;
 const HotText = styled.div`
   h5 {
     color: var(--base-color-dark, #fff);
@@ -131,19 +131,18 @@ const ProductDiv = styled.div`
   justify-content: center;
   gap: 13px;
   align-items: center;
-  @media (max-width: 1040px) {
+  @media (max-width: 800px) {
     width: 100%;
     flex-direction: column;
   }
 `;
 
 const ImgCard = styled.div`
-  width: 50%;
+  height: 500px;
   display: flex;
-  @media (max-width: 1040px) {
-    width: 100%;
+  @media (max-width: 800px) {
+    height: 400px;
     flex-direction: column;
-    
   }
   b {
     color: var(--base-color-dark, red);
@@ -162,7 +161,6 @@ const Description = styled.div`
   align-items: center;
   @media (max-width: 1040px) {
     width: 100%;
-    
   }
 `;
 const TextOne = styled.p`
