@@ -1,13 +1,11 @@
 "use client";
 import React from "react";
-import {styled} from "styled-components"
 import "./globals.css";
 import { useEffect } from "react";
 import { Inter } from "next/font/google";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "bootstrap/dist/css/bootstrap.css";
-import Header from "./components/landingPage/header";
 
 config.autoAddCss = false;
 

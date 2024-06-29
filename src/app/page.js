@@ -2,8 +2,6 @@
 import { styled } from "styled-components";
 import React from "react";
 import Banner from "./components/landingPage/landingPage/banner/banner";
-import Header from "./components/landingPage/header";
-import BodyArea from "./components/landingPage/landingPage/body/body";
 import Footer from "./components/landingPage/footer";
 import TopNav from "./components/NavBar/topNav";
 import Deals from "./components/landingPage/landingPage/body/deals";
@@ -26,6 +24,9 @@ const HomePage = () => {
           <ProductCard />
           <Deals />
           <Kids />
+          <Banner />
+
+
           <FramerCard />
           <Promo />
         </BodyBox>
@@ -48,7 +49,7 @@ const OverAllDiv = styled.div`
   justify-content: center;
 
   @media (max-width: 1000px) {
-    padding: 5px;
+    /* padding: 5px; */
   }
 `;
 

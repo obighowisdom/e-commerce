@@ -13,8 +13,7 @@ const Banner = () => {
         </ImageContain>
         <BannerImgDiv>
           <BannerText>
-            {/* <TextOne>Trending Now</TextOne> */}
-            <TextTwo>HOT TRENDING PRODUCTS</TextTwo>
+             <TextTwo>HOT TRENDING PRODUCTS</TextTwo>
             <TextThree> SALES UP TO 30% </TextThree>
             <TextFour>
               Checkout for the Hot New Apple Series <br />{" "}
@@ -63,7 +62,7 @@ const Banner = () => {
 export default Banner;
 
 const BannerDiv = styled.div`
-position: inherit;
+  position: inherit;
   margin-top: 50px;
   width: 100%;
   display: flex;
@@ -71,7 +70,7 @@ position: inherit;
   background: #fffcf7;
   @media (max-width: 1000px) {
     flex-wrap: wrap-reverse;
-  }
+    }
 `;
 
 const ImageContain = styled.div`

@@ -1,13 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import Image from "next/image";
-import { AiOutlineHeart, AiFillStar } from "react-icons/Ai";
+import { AiFillStar } from "react-icons/Ai";
 import { BsFire } from "react-icons/bs";
 import Carousel from "react-bootstrap/Carousel";
 import { HotDeals } from "@/app/components/Data/dealsData";
-
-
-
 
 const Deals = () => {
   return (
@@ -27,11 +24,18 @@ const Deals = () => {
         style={{ width: "100%", paddingTop: "12px" }}
       >
         {HotDeals.map((item) => {
-          const {productId, discount, img, name, description, price, discountPrice} =item
+          const {
+            productId,
+            discount,
+            img,
+            name,
+            description,
+            price,
+            discountPrice,
+          } = item;
           return (
             <Carousel.Item key={productId}>
               <ProductDiv>
-
                 <ImgCard>
                   <Image
                     src={img}
@@ -79,9 +83,8 @@ const Deals = () => {
                 </Description>
               </ProductDiv>
             </Carousel.Item>
-          );          
+          );
         })}
-      
       </Carousel>
     </Container>
   );
@@ -107,10 +110,7 @@ const Hot = styled.div`
   p {
   }
 `;
-const Fire= styled.div`
-  
-
-`
+const Fire = styled.div``;
 const HotText = styled.div`
   h5 {
     color: var(--base-color-dark, #fff);
@@ -138,14 +138,11 @@ const ProductDiv = styled.div`
 `;
 
 const ImgCard = styled.div`
-  /* width: 300px; */
   height: 500px;
   display: flex;
   @media (max-width: 800px) {
-    /* width: 200px; */
     height: 400px;
     flex-direction: column;
-    
   }
   b {
     color: var(--base-color-dark, red);
@@ -164,7 +161,6 @@ const Description = styled.div`
   align-items: center;
   @media (max-width: 1040px) {
     width: 100%;
-    
   }
 `;
 const TextOne = styled.p`
